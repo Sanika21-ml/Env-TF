@@ -1,0 +1,6 @@
+rg = "RG-Gitdemo"
+location = "centralindia"
+vnetname = "network-g"
+subnetname = "subnet-1"
+vmname = "machine1"
+vm_size = "Standard_B2ats_v2"
