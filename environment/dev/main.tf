@@ -1,12 +1,12 @@
-module "resourcegroup" {
-    source = "git::https://github.com/Sanika21-ml/Modules-TF.git//resource-group?ref=main "
+module "resource-group" {
+    source = "git::https://github.com/Sanika21-ml/Modules-TF.git//resource-group"
     rg = var.rg
     location = var.location
   
 }
 
-module "Storage-account" {
-    source = "git::https://github.com/Sanika21-ml/Modules-TF.git//storage-account?ref=main"
+module "storage-account" {
+    source = "git::https://github.com/Sanika21-ml/Modules-TF.git//storage-account"
     rg = var.rg
     location = var.location
     storage = var.storage
@@ -16,7 +16,7 @@ module "Storage-account" {
 }
 
 module "vnet" {
-    source = "git::https://github.com/Sanika21-ml/Modules-TF.git//vnet?ref=main"
+    source = "git::https://github.com/Sanika21-ml/Modules-TF.git//vnet"
     rg = var.rg
     location = var.location
     vnetname = var.vnetname
@@ -28,8 +28,8 @@ module "vnet" {
   
 }
 
-module "virtualmachine" {
-    source = "git::https://github.com/Sanika21-ml/Modules-TF.git//vm?ref=main"
+module "vm" {
+    source = "git::https://github.com/Sanika21-ml/Modules-TF.git//vm"
     rg = var.rg
     location = var.location
     vmname = var.vmname
@@ -42,8 +42,8 @@ module "virtualmachine" {
   
 }
 
-module "appservice" {
-    source = "git::https://github.com/Sanika21-ml/Modules-TF.git//app-service?ref=main"
+module "app-service" {
+    source = "git::https://github.com/Sanika21-ml/Modules-TF.git//app-service"
     rg = var.rg
     location = var.location
     plan = var.plan 
@@ -52,8 +52,8 @@ module "appservice" {
   
 }
 
-module "functionapp" {
-    source = "git::https://github.com/Sanika21-ml/Modules-TF.git//function-app?ref=main"
+module "function-app" {
+    source = "git::https://github.com/Sanika21-ml/Modules-TF.git//function-app"
     appname = var.appname
     rg = var.rg
     location = var.location
@@ -65,7 +65,7 @@ module "functionapp" {
 }
 
 module "private-endpoint" {
-    source = "git::https://github.com/Sanika21-ml/Modules-TF.git//private-endpoint?ref=main"
+    source = "git::https://github.com/Sanika21-ml/Modules-TF.git//private-endpoint"
     rg = var.rg
     location = var.location
     admin_username = var.admin_username
@@ -79,14 +79,14 @@ module "private-endpoint" {
 }
 
 module "key-vault" {
-    source = "git::https://github.com/Sanika21-ml/Modules-TF.git//key-vault?ref=main"
+    source = "git::https://github.com/Sanika21-ml/Modules-TF.git//key-vault"
     rg = var.rg
     location = var.location
 
 }
 
 module "dns" {
-    source = "git::https://github.com/Sanika21-ml/Modules-TF.git//dns?ref=main"
+    source = "git::https://github.com/Sanika21-ml/Modules-TF.git//dns"
     rg = var.rg
     dns_zone = module.private-endpoint.dns_zone
     nic = module.virtualmachine.nic 
