@@ -11,7 +11,7 @@ module "storage-account" {
     location = var.location
     storage = var.storage
 
-    depends_on = [ module.resourcegroup ]
+    depends_on = [ module.resource-group ]
   
 }
 
@@ -24,7 +24,7 @@ module "vnet" {
     subnetname = var.subnetname
     address_prefixes = var.address_prefixes
 
-    depends_on = [ module.resourcegroup ]
+    depends_on = [ module.resource-group ]
   
 }
 
@@ -48,7 +48,7 @@ module "app-service" {
     location = var.location
     plan = var.plan 
 
-    depends_on = [ module.resourcegroup ]
+    depends_on = [ module.resource-group ]
   
 }
 
@@ -60,7 +60,7 @@ module "function-app" {
     planapp = var.planapp
     primary_key = module.Storage-account.primary_key
 
-    depends_on = [ module.Storage-account ]
+    depends_on = [ module.storage-account ]
   
 }
 
@@ -74,7 +74,7 @@ module "private-endpoint" {
     subnet_id = module.vnet.subnet_id
     storage_id = module.Storage-account.storage_id
 
-    depends_on = [ module.virtualmachine , module.vnet , module.Storage-account ]
+    depends_on = [ module.vm , module.vnet , module.storage-account ]
   
 }
 
@@ -91,6 +91,6 @@ module "dns" {
     dns_zone = module.private-endpoint.dns_zone
     nic = module.virtualmachine.nic 
 
-    depends_on = [ module.resourcegroup , module.vnet , module.virtualmachine ]
+    depends_on = [ module.resource-group , module.vnet , module.vm ]
   
 }
