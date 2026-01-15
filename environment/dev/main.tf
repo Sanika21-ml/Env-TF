@@ -58,7 +58,7 @@ module "function-app" {
     rg = var.rg
     location = var.location
     planapp = var.planapp
-    primary_key = module.Storage-account.primary_key
+    primary_key = module.storage-account.primary_key
 
     depends_on = [ module.storage-account ]
   
@@ -72,7 +72,7 @@ module "private-endpoint" {
     admin_password = var.admin_password
     vnet_id = module.vnet.vnet_id
     subnet_id = module.vnet.subnet_id
-    storage_id = module.Storage-account.storage_id
+    storage_id = module.storage-account.storage_id
 
     depends_on = [ module.vm , module.vnet , module.storage-account ]
   
@@ -89,7 +89,7 @@ module "dns" {
     source = "git::https://github.com/Sanika21-ml/Modules-TF.git//dns"
     rg = var.rg
     dns_zone = module.private-endpoint.dns_zone
-    nic = module.virtualmachine.nic 
+    nic = module.vm.nic 
 
     depends_on = [ module.resource-group , module.vnet , module.vm ]
   
